@@ -1,0 +1,14 @@
+{
+  "name": "xml-types",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "kirito <kirito61254@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.8.3"
+  }
+}
