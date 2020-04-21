@@ -2,6 +2,14 @@ export const str = (value: string = ''): object => {
   return { '@__type': 'str', '#text': String(value) };
 }
 
+export const bool = (value: number | boolean | Array<boolean> = false): object => {
+  if (Array.isArray(value)) {
+    return { '@__type': 'bool', '@__count': value.length, '#text': value.join(' ') };
+  } else {
+    return { '@__type': 'bool', '#text': Boolean(value) };
+  }
+}
+
 export const float = (value: number = 0.0): object => {
   return { '@__type': 'float', '#text': value };
 }
