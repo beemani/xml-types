@@ -7,7 +7,7 @@ exports.str = function (value) {
 exports.bool = function (value) {
     if (value === void 0) { value = false; }
     if (Array.isArray(value)) {
-        return { '@__type': 'bool', '@__count': value.length, '#text': value.join(' ') };
+        return { '@__type': 'bool', '@__count': value.length, '#text': value.reduce(function (res, x) { return res << 1 | x; }) };
     }
     else {
         return { '@__type': 'bool', '#text': Boolean(value) };

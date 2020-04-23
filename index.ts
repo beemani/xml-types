@@ -3,8 +3,11 @@ export const str = (value: string = ''): object => {
 }
 
 export const bool = (value: number | boolean | Array<boolean> = false): object => {
+
+
   if (Array.isArray(value)) {
-    return { '@__type': 'bool', '@__count': value.length, '#text': value.join(' ') };
+    console.info(value.reduce((res, x) => res << 1 | x))
+    return { '@__type': 'bool', '@__count': value.length, '#text': value.reduce((res, x) => res << 1 | x) };
   } else {
     return { '@__type': 'bool', '#text': Boolean(value) };
   }
