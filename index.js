@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.str = function (value) {
     if (value === void 0) { value = ''; }
@@ -6,12 +17,11 @@ exports.str = function (value) {
 };
 exports.bool = function (value) {
     if (value === void 0) { value = false; }
-    if (Array.isArray(value)) {
-        return { '@__type': 'bool', '@__count': value.length, '#text': value.reduce(function (res, x) { return res << 1 | x; }) };
-    }
-    else {
-        return { '@__type': 'bool', '#text': Boolean(value) };
-    }
+    // if (Array.isArray(value)) {
+    //   return { '@__type': 'bool', '@__count': value.length, '#text': value.reduce((res, x) => res << 1 | x) };
+    // } else {
+    return { '@__type': 'bool', '#text': Boolean(value) };
+    // }
 };
 exports.float = function (value) {
     if (value === void 0) { value = 0.0; }
@@ -51,13 +61,13 @@ exports.s16 = function (value) {
         return { '@__type': 's16', '#text': Number(value) };
     }
 };
-exports.s32 = function (value) {
+exports.s32 = function (value, attr) {
     if (value === void 0) { value = 0; }
     if (Array.isArray(value)) {
-        return { '@__type': 's32', '@__count': value.length, '#text': value.join(' ') };
+        return __assign({ '@__type': 's32', '@__count': value.length, '#text': value.join(' ') }, attr);
     }
     else {
-        return { '@__type': 's32', '#text': Number(value) };
+        return __assign({ '@__type': 's32', '#text': Number(value) }, attr);
     }
 };
 exports.s64 = function (value) {

@@ -3,14 +3,11 @@ export const str = (value: string = ''): object => {
 }
 
 export const bool = (value: number | boolean | Array<boolean> = false): object => {
-
-
-  if (Array.isArray(value)) {
-    console.info(value.reduce((res, x) => res << 1 | x))
-    return { '@__type': 'bool', '@__count': value.length, '#text': value.reduce((res, x) => res << 1 | x) };
-  } else {
+  // if (Array.isArray(value)) {
+  //   return { '@__type': 'bool', '@__count': value.length, '#text': value.reduce((res, x) => res << 1 | x) };
+  // } else {
     return { '@__type': 'bool', '#text': Boolean(value) };
-  }
+  // }
 }
 
 export const float = (value: number = 0.0): object => {
@@ -49,11 +46,11 @@ export const s16 = (value: number | Array<number> = 0): object => {
   }
 }
 
-export const s32 = (value: number | Array<number> = 0): object => {
+export const s32 = (value: number | Array<number> = 0, attr: object): object => {
   if (Array.isArray(value)) {
-    return { '@__type': 's32', '@__count': value.length, '#text': value.join(' ') };
+    return { '@__type': 's32', '@__count': value.length, '#text': value.join(' '), ...attr };
   } else {
-    return { '@__type': 's32', '#text': Number(value) };
+    return { '@__type': 's32', '#text': Number(value), ...attr };
   }
 }
 
